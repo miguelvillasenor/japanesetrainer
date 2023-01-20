@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Japanese trainer"
 include ':app'
+include ':domain'
+include ':network'

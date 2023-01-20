@@ -1,4 +1,11 @@
 package dev.mvillasenor.japanesetrainer.network
 
-class NetworkClient {
+import retrofit2.Retrofit
+
+class NetworkClient constructor(
+    private val retrofit: Retrofit
+) {
+    suspend fun test() {
+        retrofit.create(WanikaniApi::class.java).getAssignments()
+    }
 }

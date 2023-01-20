@@ -1,9 +1,49 @@
 [versions]
 retrofit = "2.9.0"
+hilt = "2.44"
+dagger = "2.44"
+compose-ui = "1.3.3"
+ktx = "1.9.0"
+lyfecycle = "2.5.1"
 
 [libraries]
-retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit"}
-retrofit-gson-converter  = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit"}
+corektx = { module = "androidx.core:core-ktx", version.ref = "ktx" }
+
+appcompat = { module = "androidx.appcompat:appcompat", version = "1.4.1" }
+
+lifecyclektx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lyfecycle" }
+
+retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-gson-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hiltcompiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+
+dagger = {  module = "com.google.dagger:dagger", version.ref = "dagger"  }
+daggercompiler = {  module = "com.google.dagger:dagger-compiler", version.ref = "dagger"  }
+
+compose-ui-core = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
+compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-ui" }
+
+compose-activity = { module = "androidx.activity:activity-compose", version = "1.6.1" }
+compose-material = { module = "androidx.compose.material:material", version = "1.3.1" }
+
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-ui" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose-ui" }
+composejunit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose-ui" }
+
+junit = { module = "junit:junit", version = "4.13.2" }
+android-junit = { module = "androidx.test.ext:junit", version = "1.1.5" }
+espresso = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
+
+
+
+[plugins]
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 [bundles]
 retrofit = ["retrofit-core", "retrofit-gson-converter"]
+compose = ["compose-ui-core", "compose-ui-preview", "compose-activity", "compose-material"]
+composedebug = ["compose-ui-tooling", "compose-ui-test-manifest"]
+test = ["junit"]
+androidtest = ["android-junit", "espresso"]

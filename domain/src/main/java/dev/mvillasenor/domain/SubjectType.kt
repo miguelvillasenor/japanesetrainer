@@ -1,4 +1,5 @@
 package dev.mvillasenor.domain
 
-class SubjectType {
+enum class SubjectType {
+    Radical, Kanji, Vocabulary
 }
