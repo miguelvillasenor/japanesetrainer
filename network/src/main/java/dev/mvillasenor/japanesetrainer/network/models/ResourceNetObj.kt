@@ -1,10 +1,12 @@
 package dev.mvillasenor.japanesetrainer.network.models
 
-import java.util.Date
+import com.google.gson.annotations.SerializedName
+import java.util.*
 
-data class Resource<T>(
+internal data class ResourceNetObj<T>(
     val id: Int,
     val url: String,
+    @SerializedName("data_updated_at")
     val dataUpdatedAt: Date,
     val data: T
 )

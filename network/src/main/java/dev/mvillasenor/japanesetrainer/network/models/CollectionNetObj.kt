@@ -1,18 +1,24 @@
 package dev.mvillasenor.japanesetrainer.network.models
 
-import android.graphics.pdf.PdfDocument.Page
-import java.util.Date
+import com.google.gson.annotations.SerializedName
+import java.util.*
 
-data class Collection<T>(
+internal data class CollectionNetObj<T>(
     val url: String,
+    @SerializedName("pages")
     val pages: Pages,
+    @SerializedName("total_count")
     val totalCount: Int,
+    @SerializedName("data_updated_at")
     val dataUpdatedAt: Date,
-    val data: List<Resource<T>>
+    val data: List<ResourceNetObj<T>>
 )
 
-data class Pages(
+internal data class Pages(
+    @SerializedName("per_page")
     val perPage: Int,
+    @SerializedName("next_url")
     val nextUrl: String,
-    val previousUrl:String
+    @SerializedName("previous_url")
+    val previousUrl: String
 )

@@ -1,17 +1,10 @@
-package dev.mvillasenor.japanesetrainer
+package dev.mvillasenor.japanesetrainer.di
 
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.mvillasenor.japanesetrainer.network.NetModule
-import dev.mvillasenor.japanesetrainer.network.NetworkClient
-import retrofit2.Retrofit
-import javax.inject.Singleton
+import dev.mvillasenor.japanesetrainer.network.NetworkModule
 
-@Module(includes = [NetModule::class])
+@Module(includes = [NetworkModule::class])
 @InstallIn(SingletonComponent::class)
-class TestModule {
-
-
-}
+class SingletonModule

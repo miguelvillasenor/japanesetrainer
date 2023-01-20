@@ -1,10 +1,11 @@
 package dev.mvillasenor.japanesetrainer.network
 
-import retrofit2.Response
+import dev.mvillasenor.japanesetrainer.network.models.AssignmentNetObj
+import dev.mvillasenor.japanesetrainer.network.models.CollectionNetObj
 import retrofit2.http.GET
 
-interface WanikaniApi{
+internal interface WanikaniApi {
 
     @GET("assignments")
-    suspend fun getAssignments(): Response<String>
+    suspend fun getAssignments(): CollectionNetObj<AssignmentNetObj>
 }
