@@ -32,6 +32,9 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose-ui" }
 composejunit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose-ui" }
 
+securitycrypto = { module = "androidx.security:security-crypto", version = "1.1.0-alpha04" }
+securitycryptoktx = { module = "androidx.security:security-crypto-ktx", version = "1.1.0-alpha04" }
+
 junit = { module = "junit:junit", version = "4.13.2" }
 android-junit = { module = "androidx.test.ext:junit", version = "1.1.5" }
 espresso = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }

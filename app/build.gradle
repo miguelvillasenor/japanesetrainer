@@ -58,6 +58,7 @@ dependencies {
     implementation libs.bundles.composedebug
     implementation libs.bundles.retrofit
     implementation project(':network')
+    implementation project(':config')
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest

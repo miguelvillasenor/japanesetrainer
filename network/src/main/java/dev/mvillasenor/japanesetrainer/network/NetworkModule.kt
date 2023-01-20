@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
+import dev.mvillasenor.japansetrainer.security.AppConfig
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,8 +19,8 @@ import javax.inject.Singleton
 class NetworkModule {
 
     @Provides
-    fun providesOkHttpClient(application: Application): OkHttpClient = OkHttpClient.Builder()
-        .addNetworkInterceptor(AuthenticatorInterceptor())
+    fun providesOkHttpClient(application: Application, appConfig: AppConfig): OkHttpClient = OkHttpClient.Builder()
+        .addNetworkInterceptor(AuthenticatorInterceptor(appConfig))
         .addNetworkInterceptor(HttpLoggingInterceptor().apply {
             setLevel(HttpLoggingInterceptor.Level.HEADERS)
         })

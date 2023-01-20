@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dev.mvillasenor.japanesetrainer.network.NetworkClient
 import dev.mvillasenor.japanesetrainer.ui.theme.JapaneseTrainerTheme
+import dev.mvillasenor.japansetrainer.security.AppConfig
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,9 +23,13 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var networkClient: NetworkClient
+
+    @Inject
+    lateinit var appConfig: AppConfig
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Log.e("",appConfig.getBearerToken() + " : Token")
         setContent {
             JapaneseTrainerTheme {
                 Scaffold(
