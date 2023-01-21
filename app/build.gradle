@@ -51,14 +51,17 @@ android {
 
 dependencies {
     implementation libs.corektx
-    implementation libs.lifecyclektx
+    implementation libs.bundles.lifecycle
     implementation libs.hilt
     kapt libs.hiltcompiler
+    kapt libs.hiltcompilerx
+    implementation libs.composenavigation
     implementation libs.bundles.compose
     implementation libs.bundles.composedebug
     implementation libs.bundles.retrofit
     implementation project(':network')
     implementation project(':config')
+    implementation project(':config:ui')
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest

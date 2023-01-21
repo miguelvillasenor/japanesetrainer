@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="config_ui_app_config_title">Application config</string>
+    <string name="config_ui_app_config_apy_key_instructions">Please enter your wanikani api key to continue</string>
+    <string name="config_ui_app_config_api_key_label">Api key</string>
+    <string name="config_ui_app_config_save_button_label">Save</string>
+</resources>

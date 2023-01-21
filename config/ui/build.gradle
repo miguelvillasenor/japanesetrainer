@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    namespace 'dev.mvillasenor.japansetrainer.security'
-    compileSdk rootProject.ext.compileSdk
+    namespace 'dev.mvillasenor.japaneselearner.config.ui'
+    compileSdk 33
 
     defaultConfig {
-        minSdk rootProject.ext.minSdk
-        targetSdk rootProject.ext.targetSdk
+        minSdk 24
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -29,13 +29,27 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.0'
+    }
+    kapt {
+        correctErrorTypes true
+    }
 }
 
 dependencies {
     implementation libs.appcompat
     implementation libs.bundles.crypto
-    implementation libs.dagger
-    kapt libs.daggercompiler
+    implementation libs.bundles.compose
+    implementation libs.bundles.composedebug
+    implementation libs.bundles.lifecycle
+    implementation libs.hilt
+    implementation libs.hiltnavcompose
+    kapt libs.hiltcompiler
+    implementation project(":config")
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest
