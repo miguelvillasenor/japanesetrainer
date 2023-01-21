@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ColumnScope.ApiConfigScreenContent(
+    unused: String,
     apiKey: String,
     onApiKeyUpdated: (String) -> Unit,
     onApiKeySaved: () -> Unit
