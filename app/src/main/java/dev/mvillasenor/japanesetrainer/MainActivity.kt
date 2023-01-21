@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.mvillasenor.japaneselearner.config.ui.AppConfigScreen
+import dev.mvillasenor.japanesetrainer.design.JapaneseTrainerTheme
 import dev.mvillasenor.japanesetrainer.network.NetworkClient
 import dev.mvillasenor.japansetrainer.security.AppConfig
 import kotlinx.coroutines.launch
@@ -27,9 +28,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-
-            NavHost(navController = navController, startDestination = "config") {
-                composable("config") { AppConfigScreen(::onApiConfigSaved) }
+            JapaneseTrainerTheme {
+                NavHost(navController = navController, startDestination = "config") {
+                    composable("config") { AppConfigScreen(::onApiConfigSaved) }
+                }
             }
         }
     }

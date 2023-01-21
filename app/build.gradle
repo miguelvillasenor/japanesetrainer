@@ -62,6 +62,7 @@ dependencies {
     implementation project(':network')
     implementation project(':config')
     implementation project(':config:ui')
+    implementation project(':design')
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest

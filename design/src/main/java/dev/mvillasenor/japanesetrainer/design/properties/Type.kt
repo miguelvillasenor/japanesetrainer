@@ -1,4 +1,4 @@
-package dev.mvillasenor.japanesetrainer.ui.theme
+package dev.mvillasenor.japanesetrainer.design
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

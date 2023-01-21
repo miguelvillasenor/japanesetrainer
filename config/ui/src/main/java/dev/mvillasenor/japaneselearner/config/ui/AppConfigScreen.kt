@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -22,19 +23,23 @@ fun AppConfigScreen(
     Scaffold(
         topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.config_ui_app_config_title)) }) },
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .padding(bottom = padding.calculateBottomPadding())
-                .fillMaxHeight()
-        ) {
-            ApiConfigScreenContent(
-                apiKey = state.value.apiKey,
-                onApiKeyUpdated = { viewModel.updateApiKey(it) },
-                onApiKeySaved = {
-                    viewModel.saveApiKey()
-                    onSaved()
-                }
-            )
+        Surface {
+            Column(
+                modifier = Modifier
+                    .padding(bottom = padding.calculateBottomPadding())
+                    .fillMaxHeight()
+            ) {
+
+
+                ApiConfigScreenContent(
+                    apiKey = state.value.apiKey,
+                    onApiKeyUpdated = { viewModel.updateApiKey(it) },
+                    onApiKeySaved = {
+                        viewModel.saveApiKey()
+                        onSaved()
+                    }
+                )
+            }
         }
 
     }

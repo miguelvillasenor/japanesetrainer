@@ -1,4 +1,4 @@
-package dev.mvillasenor.japanesetrainer.ui.theme
+package dev.mvillasenor.japanesetrainer.design
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
