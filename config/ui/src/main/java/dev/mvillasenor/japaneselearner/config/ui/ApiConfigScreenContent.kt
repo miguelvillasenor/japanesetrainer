@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -16,7 +17,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ColumnScope.ApiConfigScreenContent(
-    unused: String,
     apiKey: String,
     onApiKeyUpdated: (String) -> Unit,
     onApiKeySaved: () -> Unit
@@ -27,7 +27,8 @@ fun ColumnScope.ApiConfigScreenContent(
         text = stringResource(id = R.string.config_ui_app_config_apy_key_instructions),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 16.dp),
+        color = MaterialTheme.colors.onSurface
     )
     Spacer(modifier = Modifier.height(16.dp))
     TextField(

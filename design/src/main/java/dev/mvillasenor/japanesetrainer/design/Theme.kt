@@ -1,4 +1,4 @@
-package dev.mvillasenor.japanesetrainer.ui.theme
+package dev.mvillasenor.japanesetrainer.design
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -7,15 +7,17 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = DarkGreen,
+    primaryVariant = Charcoal,
+    secondary = Mustard
+
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = AbyssGreen,
+    primaryVariant = CoolGrey,
+    secondary = PaleSepia,
+    onSurface = MainTextGray,
 
     /* Other default colors to override
     background = Color.White,
