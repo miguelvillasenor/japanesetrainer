@@ -1,19 +1,18 @@
 package dev.mvillasenor.japanesetrainer
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import dev.mvillasenor.japaneselearner.config.ui.AppConfigScreen
+import dev.mvillasenor.japaneselearner.config.ui.navigation.ConfigRoutes
+import dev.mvillasenor.japaneselearner.config.ui.navigation.configGraph
 import dev.mvillasenor.japanesetrainer.design.JapaneseTrainerTheme
 import dev.mvillasenor.japanesetrainer.network.NetworkClient
 import dev.mvillasenor.japansetrainer.security.AppConfig
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -29,17 +28,31 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             JapaneseTrainerTheme {
-                NavHost(navController = navController, startDestination = "config") {
-                    composable("config") { AppConfigScreen(::onApiConfigSaved) }
+                NavHost(
+                    navController = navController,
+                    startDestination = getInitialRoute()
+                ) {
+                    composable("main") { MainScreen() }
+                    configGraph(
+                        navController = navController,
+                        onFlowFinished = { onConfigFlowFinished(navController) }
+                    )
                 }
             }
         }
     }
 
-    private fun onApiConfigSaved() {
-        lifecycleScope.launch {
-            val result = networkClient.test()
-            Log.d("Test", result.toString())
+    private fun getInitialRoute(): String = if (appConfig.getBearerToken().isNullOrEmpty()) {
+        ConfigRoutes.CONFIG_GRAPH_ROUTE
+    } else {
+        "main"
+    }
+
+    private fun onConfigFlowFinished(navController: NavController) {
+        navController.navigate("main") {
+            popUpTo(ConfigRoutes.CONFIG_GRAPH_ROUTE) {
+                inclusive = true
+            }
         }
     }
 }
