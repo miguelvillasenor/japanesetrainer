@@ -1,26 +1,21 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
 }
 
 android {
-    namespace 'dev.mvillasenor.japanesetrainer'
+    namespace 'dev.mvillasenor.japanesetrainer.main_ui'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
-        applicationId "dev.mvillasenor.japanesetrainer"
         minSdk rootProject.ext.minSdk
         targetSdk rootProject.ext.targetSdk
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
+
 
     buildTypes {
         release {
@@ -41,31 +36,25 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion '1.4.0'
     }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-            excludes += 'META-INF/gradle/incremental.annotation.processors'
-        }
+    kapt {
+        correctErrorTypes true
     }
 }
 
 dependencies {
-    implementation libs.corektx
-    implementation libs.bundles.lifecycle
-    implementation libs.hilt
-    kapt libs.hiltcompiler
-    kapt libs.hiltcompilerx
-    implementation libs.composenavigation
+
+    implementation libs.appcompat
+    implementation libs.bundles.crypto
     implementation libs.bundles.compose
     implementation libs.bundles.composedebug
-    implementation libs.bundles.retrofit
-    implementation project(':config:ui')
-    implementation project(':main-ui')
-    implementation project(':network')
-    implementation project(':config')
-    implementation project(':design')
+    implementation libs.bundles.lifecycle
+    implementation libs.hilt
+    implementation libs.hiltnavcompose
+    implementation project(path: ':design')
+    kapt libs.hiltcompiler
+    implementation project(":network")
+    implementation project(":domain")
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest
-    androidTestImplementation libs.composejunit
 }
