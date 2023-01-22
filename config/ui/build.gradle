@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace 'dev.mvillasenor.japaneselearner.config.ui'
-    compileSdk 33
+    compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -50,6 +50,7 @@ dependencies {
     implementation libs.hiltnavcompose
     kapt libs.hiltcompiler
     implementation project(":config")
+    implementation project(":design")
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest

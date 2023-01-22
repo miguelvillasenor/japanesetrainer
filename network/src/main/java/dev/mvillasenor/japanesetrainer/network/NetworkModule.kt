@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.io.File
 import java.text.DateFormat
 import javax.inject.Singleton
@@ -36,7 +37,6 @@ class NetworkModule {
         .client(client)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
-
 
     @Provides
     fun providesGson(): Gson = GsonBuilder()

@@ -30,6 +30,7 @@ hiltcompilerx = { module = "androidx.hilt:hilt-compiler", version = "1.0.0" }
 httploggin = { module = "com.squareup.okhttp3:logging-interceptor", version = "4.10.0" }
 junit = { module = "junit:junit", version = "4.13.2" }
 lifecycle-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lyfecycle" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lyfecycle" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lyfecycle" }
 retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -43,7 +44,7 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 androidtest = ["android-junit", "espresso"]
 compose = ["compose-ui-core", "compose-ui-preview", "compose-activity", "compose-material"]
 composedebug = ["compose-ui-tooling", "compose-ui-test-manifest"]
-crypto = ["security-crypto", "security-cryptoktx"]
+crypto = ["security-crypto", "security-cryptoktx", "lifecycle-viewmodel-ktx"]
 lifecycle = ["lifecycle-ktx", "lifecycle-viewmodel-compose"]
 retrofit = ["retrofit-core", "retrofit-gson-converter"]
 test = ["junit"]

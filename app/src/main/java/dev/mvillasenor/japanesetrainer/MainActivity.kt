@@ -5,12 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.mvillasenor.japaneselearner.config.ui.navigation.ConfigRoutes
 import dev.mvillasenor.japaneselearner.config.ui.navigation.configGraph
 import dev.mvillasenor.japanesetrainer.design.JapaneseTrainerTheme
+import dev.mvillasenor.japanesetrainer.main_ui.MainRoutes
+import dev.mvillasenor.japanesetrainer.main_ui.mainGraph
 import dev.mvillasenor.japanesetrainer.network.NetworkClient
 import dev.mvillasenor.japansetrainer.security.AppConfig
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = getInitialRoute()
                 ) {
-                    composable("main") { MainScreen() }
+                    mainGraph()
                     configGraph(
                         navController = navController,
                         onFlowFinished = { onConfigFlowFinished(navController) }
@@ -45,11 +46,11 @@ class MainActivity : ComponentActivity() {
     private fun getInitialRoute(): String = if (appConfig.getBearerToken().isNullOrEmpty()) {
         ConfigRoutes.CONFIG_GRAPH_ROUTE
     } else {
-        "main"
+        MainRoutes.MAIN_GRAPH_ROUTE
     }
 
     private fun onConfigFlowFinished(navController: NavController) {
-        navController.navigate("main") {
+        navController.navigate(MainRoutes.MAIN_GRAPH_ROUTE) {
             popUpTo(ConfigRoutes.CONFIG_GRAPH_ROUTE) {
                 inclusive = true
             }
