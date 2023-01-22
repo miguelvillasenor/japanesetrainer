@@ -39,4 +39,7 @@ dependencies {
     kapt libs.roomcompiler
     implementation project(":domain")
     implementation 'com.google.code.gson:gson:2.8.9'
+
+    testImplementation libs.bundles.test
+    androidTestImplementation libs.bundles.androidtest
 }
