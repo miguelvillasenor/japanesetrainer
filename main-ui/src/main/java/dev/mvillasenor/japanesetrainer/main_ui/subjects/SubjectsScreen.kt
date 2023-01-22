@@ -1,8 +1,11 @@
 package dev.mvillasenor.japanesetrainer.main_ui.subjects
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -20,14 +23,21 @@ fun SubjectsScreen(
     Scaffold(
         topBar = { TopAppBar(title = { Text(text = "Subjects") }) }
     ) {
-        LazyColumn(modifier = Modifier.padding(it.calculateBottomPadding())) {
-            items(screenState.value.radicals) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.padding(it.calculateBottomPadding())
+        ) {
+            items(screenState.value.kanjis) {
                 Card(
                     modifier = Modifier
                         .padding(Spacings.medium)
                         .fillMaxWidth()
                 ) {
-                    Column(modifier = Modifier.padding(vertical = Spacings.medium).fillMaxWidth()) {
+                    Column(
+                        modifier = Modifier
+                            .padding(vertical = Spacings.medium)
+                            .fillMaxWidth()
+                    ) {
                         Text(
                             it.characters ?: "no character",
                             color = MaterialTheme.colors.onSurface,
