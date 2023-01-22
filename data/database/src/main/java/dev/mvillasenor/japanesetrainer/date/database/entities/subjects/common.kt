@@ -1,31 +1,42 @@
-package dev.mvillasenor.japanesetrainer.network.models.subjects
+package dev.mvillasenor.japanesetrainer.date.database.entities.subjects
 
 import com.google.gson.annotations.SerializedName
 import dev.mvillasenor.domain.subjects.AuxiliaryMeaning
 import dev.mvillasenor.domain.subjects.AuxiliaryMeaningType
 import dev.mvillasenor.domain.subjects.Meaning
 
-internal data class MeaningNetObj(
+data class MeaningEntity(
     val meaning: String,
     val primary: Boolean,
     @SerializedName("accepted_answer")
     val acceptedAnswer: Boolean,
 )
 
-internal data class AuxiliaryMeaningNetObj(
+data class AuxiliaryMeaningEntity(
     val meaning: String,
     val type: String
 )
 
-internal fun MeaningNetObj.toMeaning(): Meaning = Meaning(
+internal fun AuxiliaryMeaningEntity.toDomain(): AuxiliaryMeaning = AuxiliaryMeaning(
+    meaning = meaning,
+    type = AuxiliaryMeaningType.valueOf(type)
+)
+
+internal fun AuxiliaryMeaning.toEntity(): AuxiliaryMeaningEntity = AuxiliaryMeaningEntity(
+    meaning = meaning,
+    type = type.name
+)
+
+internal fun MeaningEntity.toDomain(): Meaning = Meaning(
     meaning = meaning,
     primary = primary,
     acceptedAnswer = acceptedAnswer
 )
 
-internal fun AuxiliaryMeaningNetObj.toAuxiliaryMeaning(): AuxiliaryMeaning = AuxiliaryMeaning(
+internal fun Meaning.toEntity(): MeaningEntity = MeaningEntity(
     meaning = meaning,
-    type = auxiliaryMeaningTypeFromString(type)
+    primary = primary,
+    acceptedAnswer = acceptedAnswer
 )
 
 private fun auxiliaryMeaningTypeFromString(type: String): AuxiliaryMeaningType = when (type) {

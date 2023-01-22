@@ -1,5 +1,6 @@
 package dev.mvillasenor.japanesetrainer.main_ui.subjects
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -27,7 +28,8 @@ fun SubjectsScreen(
             columns = GridCells.Fixed(2),
             modifier = Modifier.padding(it.calculateBottomPadding())
         ) {
-            items(screenState.value.kanjis) {
+
+            items(screenState.value.radicals, key = {it.id}) {
                 Card(
                     modifier = Modifier
                         .padding(Spacings.medium)
