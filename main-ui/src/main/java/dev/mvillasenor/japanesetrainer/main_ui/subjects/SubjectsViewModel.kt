@@ -3,36 +3,34 @@ package dev.mvillasenor.japanesetrainer.main_ui.subjects
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.mvillasenor.domain.subjects.Kanji
 import dev.mvillasenor.domain.subjects.Radical
 import dev.mvillasenor.domain.subjects.Subject
-import dev.mvillasenor.japanesetrainer.network.NetworkClient
-import kotlinx.coroutines.flow.MutableStateFlow
+import dev.mvillasenor.japaneselearner.data.SubjectsRepository
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
 class SubjectsViewModel @Inject constructor(
-    private val networkClient: NetworkClient
+    subjectsRepository: SubjectsRepository
 ) : ViewModel() {
 
-    private val _screenState = MutableStateFlow(
-        SubjectsScreenState()
-    )
-    val screenState: StateFlow<SubjectsScreenState> = _screenState
-
-    init {
-        viewModelScope.launch {
-            networkClient.getRadicals().onSuccess { result ->
-                _screenState.update { it.copy(radicals = result) }
-            }
+    val screenState: StateFlow<SubjectsScreenState> = subjectsRepository.observeRadicals()
+        .map {
+            SubjectsScreenState(
+                radicals = it,
+                kanjis = emptyList()
+            )
         }
-    }
+        .stateIn(viewModelScope, SharingStarted.Lazily, SubjectsScreenState())
 
 }
 
 
 data class SubjectsScreenState(
-    val radicals: List<Subject<Radical>> = emptyList()
+    val radicals: List<Subject<Radical>> = emptyList(),
+    val kanjis: List<Subject<Kanji>> = emptyList()
 )

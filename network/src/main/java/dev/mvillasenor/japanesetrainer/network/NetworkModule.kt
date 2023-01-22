@@ -23,7 +23,7 @@ class NetworkModule {
     fun providesOkHttpClient(application: Application, appConfig: AppConfig): OkHttpClient = OkHttpClient.Builder()
         .addNetworkInterceptor(AuthenticatorInterceptor(appConfig))
         .addNetworkInterceptor(HttpLoggingInterceptor().apply {
-            setLevel(HttpLoggingInterceptor.Level.HEADERS)
+            setLevel(HttpLoggingInterceptor.Level.BASIC)
         })
         .cache(
             Cache(File(application.cacheDir, "http_cache"), 50L * 1024L * 1024L)

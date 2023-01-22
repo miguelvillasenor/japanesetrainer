@@ -59,11 +59,12 @@ dependencies {
     implementation libs.bundles.compose
     implementation libs.bundles.composedebug
     implementation libs.bundles.retrofit
+    implementation project(':config')
     implementation project(':config:ui')
+    implementation project(':data')
+    implementation project(':design')
     implementation project(':main-ui')
     implementation project(':network')
-    implementation project(':config')
-    implementation project(':design')
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest

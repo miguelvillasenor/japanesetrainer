@@ -5,17 +5,17 @@ plugins {
 }
 
 android {
-    namespace 'dev.mvillasenor.japanesetrainer.main_ui'
+    namespace 'dev.mvillasenor.japanesetrainer.date.database'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
         minSdk rootProject.ext.minSdk
         targetSdk rootProject.ext.targetSdk
 
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
-
 
     buildTypes {
         release {
@@ -30,30 +30,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.4.0'
-    }
-    kapt {
-        correctErrorTypes true
-    }
 }
 
 dependencies {
-
-    implementation libs.appcompat
-    implementation libs.bundles.crypto
-    implementation libs.bundles.compose
-    implementation libs.bundles.composedebug
-    implementation libs.bundles.lifecycle
-    implementation libs.hilt
-    implementation libs.hiltnavcompose
-    implementation project(path: ':design')
-    kapt libs.hiltcompiler
-    implementation project(":data")
+    implementation libs.corektx
+    implementation libs.coroutines
+    implementation libs.bundles.room
+    kapt libs.roomcompiler
     implementation project(":domain")
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidtest

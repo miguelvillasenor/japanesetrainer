@@ -5,11 +5,12 @@ plugins {
 
 android {
     namespace 'dev.mvillasenor.japanesetrainer.design'
-    compileSdk 33
+    compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
